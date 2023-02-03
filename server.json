@@ -23,6 +23,22 @@
       "category": "Educação",
       "price": 1980,
       "createdAt": "2023-01-30T23:15:06.983Z"
+    },
+    {
+      "description": "Desenvolvimento de APP",
+      "price": 10000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2023-02-03T00:02:35.538Z",
+      "id": 4
+    },
+    {
+      "description": "Lanche",
+      "price": 30,
+      "category": "Comida",
+      "type": "outcome",
+      "createdAt": "2023-02-03T00:29:07.624Z",
+      "id": 5
     }
   ]
 }

@@ -1,29 +1,11 @@
 import { ArrowCircleDown, ArrowCircleUp } from "phosphor-react";
-import { useContext } from "react";
-import { TransactionsContext } from "../../contexts/TransactionsContext";
+import money from "../../assets/money.svg";
+import { useSummary } from "../../hooks/useSummary";
 import { priceFormatter } from "../../utils/formatter";
 import { SummaryCard, SummaryContainter } from "./styles";
 
 export function Summary() {
-  const { transactions } = useContext(TransactionsContext);
-
-  const summary = transactions.reduce(
-    (acc, transaction) => {
-      if (transaction.type === "income") {
-        acc.income += transaction.price;
-        acc.total += transaction.price;
-      } else {
-        acc.outcome += transaction.price;
-        acc.total -= transaction.price;
-      }
-      return acc;
-    },
-    {
-      income: 0,
-      outcome: 0,
-      total: 0,
-    }
-  );
+  const summary = useSummary();
 
   return (
     <SummaryContainter>
@@ -46,10 +28,11 @@ export function Summary() {
       <SummaryCard variant="green">
         <header>
           <span>Total</span>
-          <ArrowCircleUp size={32} color="#fff" />
+          <img src={money} />
         </header>
         <strong>{priceFormatter.format(summary.total)}</strong>
       </SummaryCard>
     </SummaryContainter>
   );
+  return summary;
 }
